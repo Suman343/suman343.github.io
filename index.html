@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+    <title>5 point someone</title>
+  </head>
+  <body>
+    <audio id="diceSound">
+      <source src="dice.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="killedSound">
+      <source src="killed.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="winSound">
+      <source src="win.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="inoutSound">
+      <source src="inout.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="stepSound">
+      <source src="step.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="mainframe">
+      <div class="diceboard">
+        <div class="info">
+          <span class="playername"> Player 1 </span>
+          <div class="b-dice" onclick="dice(this,0)">0</div>
+        </div>
+        <div class="info">
+          <span class="playername"> Player 2 </span>
+          <div class="g-dice" onclick="dice(this,1)">0</div>
+        </div>
+        <div class="info">
+          <span class="playername"> Player 3 </span>
+          <div class="r-dice" onclick="dice(this,2)">0</div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="blue">
+          <div class="playerzone">
+            <div class="player">
+              <span onclick="moveblue(this,0)" class="bp b material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveblue(this,1)" class="bp b material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveblue(this,2)" class="bp b material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveblue(this,3)" class="bp b material-icons"
+                >stars</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+
+        <div class="green">
+          <div class="playerzone">
+            <div class="player">
+              <span onclick="movegreen(this,0)" class="gp g material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="movegreen(this,1)" class="gp g material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="movegreen(this,2)" class="gp g material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="movegreen(this,3)" class="gp g material-icons"
+                >stars</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+
+        <div class="astep step"></div>
+        <div class="astep step greensafe"></div>
+        <div class="astep step gstop"></div>
+        <div class="astep step"></div>
+        <div class="astep step redsafe"></div>
+        <div class="astep step rstop"></div>
+        <div class="astep step bstop"></div>
+        <div class="astep step greensafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step gstop"></div>
+        <div class="astep step redsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step greensafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step redsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step greensafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step redsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step greensafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step redsafe"></div>
+        <div class="astep step"></div>
+
+        <div class="passage"></div>
+        <div class="red">
+          <div class="playerzone">
+            <div class="player">
+              <span onclick="movered(this,0)" class="rp r material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="movered(this,1)" class="rp r material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="movered(this,2)" class="rp r material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="movered(this,3)" class="rp r material-icons"
+                >stars</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="astep step"></div>
+        <div class="astep step bstop"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+
+        <div class="centerbox">HOME</div>
+
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step rstop"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+
+        <div class="astep step"></div>
+        <div class="astep step bluesafe"></div>
+        <div class="astep step bluesafe"></div>
+        <div class="astep step bluesafe"></div>
+        <div class="astep step bluesafe"></div>
+        <div class="astep step bluesafe"></div>
+
+        <div class="astep step orangesafe"></div>
+        <div class="astep step orangesafe"></div>
+        <div class="astep step orangesafe"></div>
+        <div class="astep step orangesafe"></div>
+        <div class="astep step orangesafe"></div>
+        <div class="astep step"></div>
+
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step ystop"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step ostop"></div>
+        <div class="astep step"></div>
+
+        <div class="yellow">
+          <div class="playerzone">
+            <div class="player">
+              <span onclick="moveyellow(this,0)" class="yp y material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveyellow(this,1)" class="yp y material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveyellow(this,2)" class="yp y material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveyellow(this,3)" class="yp y material-icons"
+                >stars</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="astep step"></div>
+        <div class="astep step yellowsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step yellowsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step yellowsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step yellowsafe"></div>
+        <div class="astep step ostop"></div>
+        <div class="astep step ystop"></div>
+        <div class="astep step yellowsafe"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+        <div class="astep step"></div>
+
+        <div class="orange">
+          <div class="playerzone">
+            <div class="player">
+              <span onclick="moveorange(this,0)" class="op o material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveorange(this,1)" class="op o material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveorange(this,2)" class="op o material-icons"
+                >stars</span
+              >
+            </div>
+            <div class="player">
+              <span onclick="moveorange(this,3)" class="op o material-icons"
+                >stars</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="diceboard">
+        <div class="info">
+          <span class="playername"> Player 5 </span>
+          <div class="y-dice" onclick="dice(this,4)">0</div>
+        </div>
+        <div class="info">
+          <span class="playername"> Player 4 </span>
+          <div class="o-dice" onclick="dice(this,3)">0</div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
