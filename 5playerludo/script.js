@@ -11,6 +11,10 @@ let rdice = document.getElementsByClassName("r-dice");
 let odice = document.getElementsByClassName("o-dice");
 let ydice = document.getElementsByClassName("y-dice");
 
+let player = document.getElementsByClassName("player");
+let playerroom = document.getElementsByClassName("playerzone");
+let playername = document.getElementsByClassName("playername");
+
 // connecting to sounds
 let dicesound = document.getElementById("diceSound");
 let killedsound = document.getElementById("killedSound");
@@ -502,10 +506,353 @@ function dice(obj, colorNum) {
   diceRotation(colorNum);
 }
 
+function kill(playerNum, p) {
+  if (p == 0) {
+    if (safestep.includes(blueway[bw[playerNum]])) {
+      return 0;
+    }
+    let i;
+    for (i = 0; i < 4; i++) {
+      var green =
+        '<span onclick="movegreen(this,' +
+        i +
+        ')" class="gp material-icons g" style="z-index: 0;">stars</span>';
+      var red =
+        '<span onclick="movered(this,' +
+        i +
+        ')" class="rp material-icons r" style="z-index: 0;">stars</span>';
+      var orange =
+        '<span onclick="moveorange(this,' +
+        i +
+        ')" class="op material-icons o" style="z-index: 0;">stars</span>';
+      var yellow =
+        '<span onclick="moveyellow(this,' +
+        i +
+        ')" class="yp material-icons y" style="z-index: 0;">stars</span>';
+
+      let check = step[blueway[bw[playerNum]]].innerHTML;
+      console.log(check);
+      if (check == green) {
+        killedsound.play();
+        step[blueway[bw[playerNum]]].innerHTML = "";
+        console.log("blue cuts green");
+        gw[i] = -1;
+        gstate[i] = 0;
+        player[4 + i].innerHTML = green;
+        pmove = 7;
+        diceRotation(0);
+        return 1427;
+      } else if (check == red) {
+        killedsound.play();
+        step[blueway[bw[playerNum]]].innerHTML = "";
+        console.log("blue cuts red");
+        rw[i] = -1;
+        rstate[i] = 0;
+        player[8 + i].innerHTML = red;
+        pmove = 7;
+        diceRotation(0);
+        return 1427;
+      } else if (check == orange) {
+        killedsound.play();
+        step[blueway[bw[playerNum]]].innerHTML = "";
+        console.log("blue cuts orange");
+        ow[i] = -1;
+        ostate[i] = 0;
+        player[16 + i].innerHTML = orange;
+        pmove = 7;
+        diceRotation(0);
+        return 1427;
+      } else if (check == yellow) {
+        killedsound.play();
+        step[blueway[bw[playerNum]]].innerHTML = "";
+        console.log("blue cuts yellow");
+        yw[i] = -1;
+        ystate[i] = 0;
+        player[12 + i].innerHTML = yellow;
+        pmove = 7;
+        diceRotation(0);
+        return 1427;
+      }
+    }
+  }
+  if (p == 1) {
+    if (safestep.includes(greenway[gw[playerNum]])) {
+      return 0;
+    }
+    let i;
+    for (i = 0; i < 4; i++) {
+      var blue =
+        '<span onclick="moveblue(this,' +
+        i +
+        ')" class="bp material-icons b" style="z-index: 0;">stars</span>';
+      var red =
+        '<span onclick="movered(this,' +
+        i +
+        ')" class="rp material-icons r" style="z-index: 0;">stars</span>';
+      var orange =
+        '<span onclick="moveorange(this,' +
+        i +
+        ')" class="op material-icons o" style="z-index: 0;">stars</span>';
+      var yellow =
+        '<span onclick="moveyellow(this,' +
+        i +
+        ')" class="yp material-icons y" style="z-index: 0;">stars</span>';
+
+      let check = step[greenway[gw[playerNum]]].innerHTML;
+      console.log(check);
+      if (check == red) {
+        killedsound.play();
+        step[greenway[gw[playerNum]]].innerHTML = "";
+        console.log("green cuts red");
+        rw[i] = -1;
+        rstate[i] = 0;
+        player[8 + i].innerHTML = red;
+        pmove = 7;
+        diceRotation(1);
+        return 1427;
+      } else if (check == orange) {
+        killedsound.play();
+        step[greenway[gw[playerNum]]].innerHTML = "";
+        console.log("green cuts orange");
+        ow[i] = -1;
+        ostate[i] = 0;
+        player[16 + i].innerHTML = orange;
+        pmove = 7;
+        diceRotation(1);
+        return 1427;
+      } else if (check == yellow) {
+        killedsound.play();
+        step[greenway[gw[playerNum]]].innerHTML = "";
+        console.log("green cuts yellow");
+
+        yw[i] = -1;
+        ystate[i] = 0;
+        player[12 + i].innerHTML = yellow;
+        pmove = 7;
+        diceRotation(1);
+        return 1427;
+      } else if (check == blue) {
+        killedsound.play();
+        step[greenway[gw[playerNum]]].innerHTML = "";
+        console.log("green cuts blue");
+        bw[i] = -1;
+        bstate[i] = 0;
+        player[i].innerHTML = blue;
+        pmove = 7;
+        diceRotation(1);
+        return 1427;
+      }
+    }
+  }
+  if (p == 2) {
+    if (safestep.includes(redway[rw[playerNum]])) {
+      return 0;
+    }
+    let i;
+    for (i = 0; i < 4; i++) {
+      var blue =
+        '<span onclick="moveblue(this,' +
+        i +
+        ')" class="bp material-icons b" style="z-index: 0;">stars</span>';
+      var green =
+        '<span onclick="movegreen(this,' +
+        i +
+        ')" class="gp material-icons g" style="z-index: 0;">stars</span>';
+      var orange =
+        '<span onclick="moveorange(this,' +
+        i +
+        ')" class="op material-icons o" style="z-index: 0;">stars</span>';
+      var yellow =
+        '<span onclick="moveyellow(this,' +
+        i +
+        ')" class="yp material-icons y" style="z-index: 0;">stars</span>';
+
+      let check = step[redway[rw[playerNum]]].innerHTML;
+      console.log(check);
+      if (check == orange) {
+        killedsound.play();
+        step[redway[rw[playerNum]]].innerHTML = "";
+        console.log("red cuts orange");
+        ow[i] = -1;
+        ostate[i] = 0;
+        player[16 + i].innerHTML = orange;
+        pmove = 7;
+        diceRotation(2);
+        return 1427;
+      } else if (check == yellow) {
+        killedsound.play();
+        step[redway[rw[playerNum]]].innerHTML = "";
+        console.log("red cuts yellow");
+        yw[i] = -1;
+        ystate[i] = 0;
+        player[12 + i].innerHTML = yellow;
+        pmove = 7;
+        diceRotation(2);
+        return 1427;
+      } else if (check == blue) {
+        killedsound.play();
+        step[redway[rw[playerNum]]].innerHTML = "";
+        console.log("red cuts blue");
+        bw[i] = -1;
+        bstate[i] = 0;
+        player[i].innerHTML = blue;
+        pmove = 7;
+        diceRotation(2);
+        return 1427;
+      } else if (check == green) {
+        killedsound.play();
+        step[redway[rw[playerNum]]].innerHTML = "";
+        console.log("red cuts green");
+        gw[i] = -1;
+        gstate[i] = 0;
+        player[4 + i].innerHTML = green;
+        pmove = 7;
+        diceRotation(2);
+        return 1427;
+      }
+    }
+  }
+  if (p == 3) {
+    if (safestep.includes(orangeway[ow[playerNum]])) {
+      return 0;
+    }
+    let i;
+    for (i = 0; i < 4; i++) {
+      var blue =
+        '<span onclick="moveblue(this,' +
+        i +
+        ')" class="bp material-icons b" style="z-index: 0;">stars</span>';
+      var green =
+        '<span onclick="movegreen(this,' +
+        i +
+        ')" class="gp material-icons g" style="z-index: 0;">stars</span>';
+      var red =
+        '<span onclick="movered(this,' +
+        i +
+        ')" class="rp material-icons r" style="z-index: 0;">stars</span>';
+      var yellow =
+        '<span onclick="moveyellow(this,' +
+        i +
+        ')" class="yp material-icons y" style="z-index: 0;">stars</span>';
+
+      let check = step[orangeway[ow[playerNum]]].innerHTML;
+      console.log(check);
+      if (check == yellow) {
+        killedsound.play();
+        step[orangeway[ow[playerNum]]].innerHTML = "";
+        console.log("orange cuts yellow");
+        yw[i] = -1;
+        ystate[i] = 0;
+        player[12 + i].innerHTML = yellow;
+        pmove = 7;
+        diceRotation(3);
+        return 1427;
+      } else if (check == blue) {
+        killedsound.play();
+        step[orangeway[ow[playerNum]]].innerHTML = "";
+        console.log("orange cuts blue");
+        bw[i] = -1;
+        bstate[i] = 0;
+        player[i].innerHTML = blue;
+        pmove = 7;
+        diceRotation(3);
+        return 1427;
+      } else if (check == green) {
+        killedsound.play();
+        step[orangeway[ow[playerNum]]].innerHTML = "";
+        console.log("orange cuts green");
+        gw[i] = -1;
+        gstate[i] = 0;
+        player[4 + i].innerHTML = green;
+        pmove = 7;
+        diceRotation(3);
+        return 1427;
+      } else if (check == red) {
+        killedsound.play();
+        step[orangeway[ow[playerNum]]].innerHTML = "";
+        console.log("orange cuts red");
+        rw[i] = -1;
+        rstate[i] = 0;
+        player[8 + i].innerHTML = red;
+        pmove = 7;
+        diceRotation(3);
+        return 1427;
+      }
+    }
+  }
+  if (p == 4) {
+    if (safestep.includes(yellowway[yw[playerNum]])) {
+      return 0;
+    }
+    let i;
+    for (i = 0; i < 4; i++) {
+      var blue =
+        '<span onclick="moveblue(this,' +
+        i +
+        ')" class="bp material-icons b" style="z-index: 0;">stars</span>';
+      var green =
+        '<span onclick="movegreen(this,' +
+        i +
+        ')" class="gp material-icons g" style="z-index: 0;">stars</span>';
+      var red =
+        '<span onclick="movered(this,' +
+        i +
+        ')" class="rp material-icons r" style="z-index: 0;">stars</span>';
+      var orange =
+        '<span onclick="moveorange(this,' +
+        i +
+        ')" class="op material-icons o" style="z-index: 0;">stars</span>';
+
+      let check = step[yellowway[yw[playerNum]]].innerHTML;
+      console.log(check);
+      if (check == blue) {
+        killedsound.play();
+        step[yellowway[yw[playerNum]]].innerHTML = "";
+        console.log("yellow cuts blue");
+        bw[i] = -1;
+        bstate[i] = 0;
+        player[i].innerHTML = blue;
+        pmove = 7;
+        diceRotation(4);
+        return 1427;
+      } else if (check == green) {
+        killedsound.play();
+        step[yellowway[yw[playerNum]]].innerHTML = "";
+        console.log("yellow cuts green");
+        gw[i] = -1;
+        gstate[i] = 0;
+        player[4 + i].innerHTML = green;
+        pmove = 7;
+        diceRotation(4);
+        return 1427;
+      } else if (check == red) {
+        killedsound.play();
+        step[yellowway[yw[playerNum]]].innerHTML = "";
+        console.log("yellow cuts red");
+        rw[i] = -1;
+        rstate[i] = 0;
+        player[8 + i].innerHTML = red;
+        pmove = 7;
+        diceRotation(4);
+        return 1427;
+      } else if (check == orange) {
+        killedsound.play();
+        step[yellowway[yw[playerNum]]].innerHTML = "";
+        console.log("yellow cuts orange");
+        ow[i] = -1;
+        ostate[i] = 0;
+        player[16 + i].innerHTML = orange;
+        pmove = 7;
+        diceRotation(4);
+        return 1427;
+      }
+    }
+  }
+}
 function diceRotation(colorNum) {
   if (colorNum == 0) {
     setTimeout(function () {
-      if (pmove == 1 || pmove == 6) {
+      if (pmove == 1 || pmove == 6 || pmove == 7) {
         //checks if num is 1/6 and move player
         return 0;
       }
@@ -519,7 +866,7 @@ function diceRotation(colorNum) {
   }
   if (colorNum == 1) {
     setTimeout(function () {
-      if (pmove == 1 || pmove == 6) {
+      if (pmove == 1 || pmove == 6 || pmove == 7) {
         //checks if num is 1/6 and move player
         return 0;
       }
@@ -533,7 +880,7 @@ function diceRotation(colorNum) {
   }
   if (colorNum == 2) {
     setTimeout(function () {
-      if (pmove == 1 || pmove == 6) {
+      if (pmove == 1 || pmove == 6 || pmove == 7) {
         //checks if num is 1/6 and move player
         return 0;
       }
@@ -547,7 +894,7 @@ function diceRotation(colorNum) {
   }
   if (colorNum == 3) {
     setTimeout(function () {
-      if (pmove == 1 || pmove == 6) {
+      if (pmove == 1 || pmove == 6 || pmove == 7) {
         //checks if num is 1/6 and move player
         return 0;
       }
@@ -561,7 +908,7 @@ function diceRotation(colorNum) {
   }
   if (colorNum == 4) {
     setTimeout(function () {
-      if (pmove == 1 || pmove == 6) {
+      if (pmove == 1 || pmove == 6 || pmove == 7) {
         //checks if num is 1/6 and move player
         return 0;
       }
@@ -583,6 +930,8 @@ function moveblue(obj, playerNum) {
   if (bstate[playerNum] == 1) {
     bw[playerNum] += moves[0];
 
+    //killing part
+    kill(playerNum, 0);
     moves[0] = 0;
     if (bw[playerNum] > -1) {
       var prevpl = step[blueway[bw[playerNum]]].innerHTML;
@@ -626,6 +975,9 @@ function movegreen(obj, playerNum) {
   }
   if (gstate[playerNum] == 1) {
     gw[playerNum] += moves[1];
+
+    //killing part
+    kill(playerNum, 1);
 
     moves[1] = 0;
     if (gw[playerNum] > -1) {
@@ -671,6 +1023,9 @@ function movered(obj, playerNum) {
   if (rstate[playerNum] == 1) {
     rw[playerNum] += moves[2];
 
+    //killing part
+    kill(playerNum, 2);
+
     moves[2] = 0;
     if (rw[playerNum] > -1) {
       var prevpl = step[redway[rw[playerNum]]].innerHTML;
@@ -715,6 +1070,8 @@ function moveorange(obj, playerNum) {
   if (ostate[playerNum] == 1) {
     ow[playerNum] += moves[3];
 
+    //killing part
+    kill(playerNum, 3);
     moves[3] = 0;
     if (ow[playerNum] > -1) {
       var prevpl = step[orangeway[ow[playerNum]]].innerHTML;
@@ -744,7 +1101,6 @@ function moveorange(obj, playerNum) {
         playerNum +
         ")' class='op material-icons o'>stars</span>" +
         prevpl;
-      console.log(prevpl);
       moves[3] = 0;
     }
   }
@@ -759,6 +1115,8 @@ function moveyellow(obj, playerNum) {
   if (ystate[playerNum] == 1) {
     yw[playerNum] += moves[4];
 
+    //killing part
+    kill(playerNum, 4);
     moves[4] = 0;
     if (yw[playerNum] > -1) {
       var prevpl = step[yellowway[yw[playerNum]]].innerHTML;

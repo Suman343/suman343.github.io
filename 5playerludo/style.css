@@ -15,6 +15,7 @@ body {
   border: 0.5px solid black;
   width: 960px;
   height: 600px;
+
   display: grid;
   grid-template-columns: repeat(24, 40px);
   grid-template-rows: repeat(15, 40px);
@@ -25,9 +26,9 @@ body {
   width: 0px;
   height: 0px;
   border-top: 60px solid #00e34c;
-  border-bottom: 60px solid #04c3c9;
-  border-left: 240px solid #f7162d;
-  border-right: 240px solid #f7bb05;
+  border-bottom: 60px solid #f7bb05;
+  border-left: 240px solid #04c3c9;
+  border-right: 240px solid #de6a12;
 }
 .blue {
   background-color: #04c3c9;
@@ -47,7 +48,8 @@ body {
   grid-row: 1/6;
 }
 .passage {
-  background-color: #8a3f07;
+  background-image: url("arrow.png");
+  background-size: inherit;
   border: 0.5px solid #8a3f09;
   grid-column: 10/16;
   grid-row: 6;
