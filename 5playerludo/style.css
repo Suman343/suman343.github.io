@@ -339,7 +339,13 @@ body {
 }
 
 @media (max-width: 960px) {
+  .body {
+    transform: rotate(270deg);
+  }
   .mainframe {
     transform: rotate(270deg);
+    height: 160vh;
+    justify-content: center;
+    align-items: center;
   }
 }
