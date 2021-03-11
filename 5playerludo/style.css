@@ -8,7 +8,7 @@ body {
   height: 110vh;
   justify-content: center;
   align-items: center;
-  background-image: url("./bgludo1.jpeg");
+  background-image: url("./bgludo2.jpeg");
   background-size: cover;
 }
 .container {
@@ -345,9 +345,6 @@ body {
   .mainframe {
     transform: rotate(270deg);
     height: 180vh;
-    justify-content: center;
-    align-items: center;
-    background-image: url("./bgludo2.jpeg");
-    background-size: cover;
+    margin-left: 10px;
   }
 }
