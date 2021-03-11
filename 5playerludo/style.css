@@ -25,10 +25,10 @@ body {
   grid-row: 7/10;
   width: 0px;
   height: 0px;
-  border-top: 60px solid #00e34c;
-  border-bottom: 60px solid #f7bb05;
-  border-left: 240px solid #04c3c9;
-  border-right: 240px solid #de6a12;
+  border-top: 60px solid #611818;
+  border-bottom: 60px solid #611818;
+  border-left: 240px solid #611818;
+  border-right: 240px solid #611818;
 }
 .blue {
   background-color: #04c3c9;

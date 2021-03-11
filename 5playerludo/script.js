@@ -49,6 +49,16 @@ let rstate = [0, 0, 0, 0];
 let ostate = [0, 0, 0, 0];
 let ystate = [0, 0, 0, 0];
 
+var totalplayer = 4;
+
+var totalpb = 4;
+var totalpg = 4;
+var totalpr = 4;
+var totalpo = 4;
+var totalpy = 4;
+
+var winrank = [];
+
 let blueway = [
   37,
   38,
@@ -406,6 +416,65 @@ let yellowway = [
 ];
 
 let safestep = [37, 12, 8, 15, 11, 45, 70, 83, 84, 62];
+
+function winner(pl) {
+  //closing game after winning
+  if (pl == "b") {
+    if (totalpb == 0) {
+      winsound.play();
+      winrank.push(pl);
+      bdice[0].style.display = "none";
+      playerroom[0].innerHTML = "<img src='crown.png' class='crown'>";
+      pmove = 7;
+      moves[0] = 0;
+      diceRotation(0);
+    }
+  }
+  if (pl == "g") {
+    if (totalpg == 0) {
+      winsound.play();
+      winrank.push(pl);
+      gdice[0].style.display = "none";
+      playerroom[1].innerHTML = "<img src='crown.png' class='crown'>";
+      pmove = 7;
+      moves[1] = 0;
+      diceRotation(1);
+    }
+  }
+  if (pl == "r") {
+    if (totalpr == 0) {
+      winsound.play();
+      winrank.push(pl);
+      rdice[0].style.display = "none";
+      playerroom[2].innerHTML = "<img src='crown.png' class='crown'>";
+      pmove = 7;
+      moves[2] = 0;
+      diceRotation(2);
+    }
+  }
+  if (pl == "o") {
+    if (totalpo == 0) {
+      winsound.play();
+      winrank.push(pl);
+      odice[0].style.display = "none";
+      playerroom[4].innerHTML = "<img src='crown.png' class='crown'>";
+      pmove = 7;
+      moves[3] = 0;
+      diceRotation(3);
+    }
+  }
+  if (pl == "y") {
+    if (totalpy == 0) {
+      winsound.play();
+      winrank.push(pl);
+      ydice[0].style.display = "none";
+      playerroom[3].innerHTML = "<img src='crown.png' class='crown'>";
+      pmove = 7;
+      moves[4] = 0;
+      diceRotation(4);
+    }
+  }
+}
 
 function motionOn(colorNum) {
   if (colorNum == 0) {
@@ -930,6 +999,21 @@ function moveblue(obj, playerNum) {
   if (bstate[playerNum] == 1) {
     bw[playerNum] += moves[0];
 
+    //winning part
+    if (bw[playerNum] > 69) {
+      bw[playerNum] -= moves[0];
+      return 0;
+    }
+
+    if (bw[playerNum] == 69) {
+      inoutsound.play();
+      totalpb -= 1;
+      winner("b");
+      obj.style.display = "none";
+      bstate[playerNum] = 0;
+      return 0;
+    }
+
     //killing part
     kill(playerNum, 0);
     moves[0] = 0;
@@ -976,6 +1060,20 @@ function movegreen(obj, playerNum) {
   if (gstate[playerNum] == 1) {
     gw[playerNum] += moves[1];
 
+    //winning part
+    if (gw[playerNum] > 69) {
+      gw[playerNum] -= moves[1];
+      return 0;
+    }
+
+    if (gw[playerNum] == 69) {
+      inoutsound.play();
+      totalpg -= 1;
+      winner("g");
+      obj.style.display = "none";
+      gstate[playerNum] = 0;
+      return 0;
+    }
     //killing part
     kill(playerNum, 1);
 
@@ -1022,6 +1120,21 @@ function movered(obj, playerNum) {
   }
   if (rstate[playerNum] == 1) {
     rw[playerNum] += moves[2];
+
+    //winning part
+    if (rw[playerNum] > 69) {
+      rw[playerNum] -= moves[2];
+      return 0;
+    }
+
+    if (rw[playerNum] == 69) {
+      inoutsound.play();
+      totalpr -= 1;
+      winner("r");
+      obj.style.display = "none";
+      rstate[playerNum] = 0;
+      return 0;
+    }
 
     //killing part
     kill(playerNum, 2);
@@ -1070,6 +1183,21 @@ function moveorange(obj, playerNum) {
   if (ostate[playerNum] == 1) {
     ow[playerNum] += moves[3];
 
+    //winning part
+    if (ow[playerNum] > 69) {
+      ow[playerNum] -= moves[3];
+      return 0;
+    }
+
+    if (ow[playerNum] == 69) {
+      inoutsound.play();
+      totalpo -= 1;
+      winner("o");
+      obj.style.display = "none";
+      ostate[playerNum] = 0;
+      return 0;
+    }
+
     //killing part
     kill(playerNum, 3);
     moves[3] = 0;
@@ -1114,6 +1242,21 @@ function moveyellow(obj, playerNum) {
   }
   if (ystate[playerNum] == 1) {
     yw[playerNum] += moves[4];
+
+    //winning part
+    if (yw[playerNum] > 69) {
+      yw[playerNum] -= moves[4];
+      return 0;
+    }
+
+    if (yw[playerNum] == 69) {
+      inoutsound.play();
+      totalpy -= 1;
+      winner("y");
+      obj.style.display = "none";
+      ystate[playerNum] = 0;
+      return 0;
+    }
 
     //killing part
     kill(playerNum, 4);
