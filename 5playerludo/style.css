@@ -341,10 +341,11 @@ body {
 @media (max-width: 960px) {
   .body {
     transform: rotate(270deg);
+    margin-left: 10px;
   }
   .mainframe {
     transform: rotate(270deg);
+    background-image: url("./bgludo2.jpeg");
     height: 180vh;
-    margin-left: 10px;
   }
 }
