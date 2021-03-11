@@ -8,7 +8,8 @@ body {
   height: 110vh;
   justify-content: center;
   align-items: center;
-  background-image: url("./bgludo2.jpeg");
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, pink, purple);
   background-size: cover;
 }
 .container {
@@ -345,7 +346,6 @@ body {
   }
   .mainframe {
     transform: rotate(270deg);
-    background-image: url("./bgludo2.jpeg");
     height: 180vh;
   }
 }
