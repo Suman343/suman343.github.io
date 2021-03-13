@@ -5,7 +5,8 @@ body {
 .mainframe {
   display: flex;
   flex-direction: column;
-  height: 110vh;
+  max-width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
   background-color: red; /* For browsers that do not support gradients */
@@ -341,11 +342,12 @@ body {
 
 @media (max-width: 960px) {
   .body {
-    transform: rotate(270deg);
     margin-left: 10px;
+    transform: rotate(90deg);
   }
   .mainframe {
-    transform: rotate(270deg);
-    height: 180vh;
+    transform: rotate(90deg);
+    display: flex;
+    flex-direction: column;
+   
   }
-}
