@@ -340,7 +340,7 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1020px) {
   .body {
     margin-left: 10px;
     transform: rotate(90deg);
