@@ -1,4 +1,10 @@
-//challenge :Rock,Paper,Scissors
+
+
+const winSound = new Audio("sounds/win.wav");
+const lossSound = new Audio("sounds/loss.wav");
+const tieSound = new Audio("sounds/tie.wav");
+
+
 rpsGame = (yourChoice) => {
   console.log(yourChoice.id);
   let humanChoice, botChoice;
@@ -33,11 +39,15 @@ decideWinner = (yourChoice, botChoice) => {
 
 finalMessage = ([yourScore, botScore]) => {
   if (yourScore === 0) {
+    lossSound.play();
     return { message: "You Lost", color: "red" };
+    
   } else if (yourScore === 0.5) {
+    tieSound.play();
     return { message: "You Tied", color: "yellow" };
   } else {
-    return { message: "You Won", color: "Green" };
+    winSound.play();
+    return { message: "You Won", color: "Green" };    
   }
 };
 
@@ -75,4 +85,12 @@ rpsFrontEnd = (humanChoiceImage, botChoiceImage, finalMessage) => {
   document.getElementById("flex-box-rps-div").appendChild(humanDiv);
   document.getElementById("flex-box-rps-div").appendChild(messageDiv);
   document.getElementById("flex-box-rps-div").appendChild(botDiv);
+};
+
+
+resetProgram =()=>{
+  document.getElementById("flex-box-rps-div").innerHTML=""; 
+  document.getElementById("flex-box-rps-div").innerHTML+="<img id='rock' src='images/rock.jpg' ='' height='150' width='150' onclick='rpsGame(this)' />";
+  document.getElementById("flex-box-rps-div").innerHTML+="<img id='paper'  src='images/paper.jpg'  alt=''  height='150'  width='150'  onclick='rpsGame(this)'/>";
+  document.getElementById("flex-box-rps-div").innerHTML+=  "<img  id='scissors'  src='images/scissors.jpg'  alt=''  height='150'width='150'onclick='rpsGame(this)'/>";
 };
