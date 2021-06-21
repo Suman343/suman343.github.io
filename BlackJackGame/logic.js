@@ -1,4 +1,4 @@
-//challenge :Blackjack
+
 let blackjackGame = {
   you: { scoreSpan: "#your-blackjack-result", div: ".your-box", score: 0 },
   dealer: {
@@ -172,7 +172,6 @@ function computeWinner() {
   } else if (YOU["score"] > 21 && DEALER["score"] > 21) {
     blackjackGame["draws"] += 1;
   }
-  console.log(blackjackGame);
   return winner;
 }
 
@@ -195,7 +194,6 @@ function showResult(winner) {
       message = "You Drew!";
       messageColor = "black";
     }
-    console.log(message);
     document.querySelector("#blackjack-result").textContent = message;
     document.querySelector("#blackjack-result").style.color = messageColor;
   }
