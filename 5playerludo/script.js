@@ -1,7 +1,4 @@
-// $stepcount = document.getElementsByClassName("step");
-// for (i = 0; i < $stepcount.length; i++) {
-//   $stepcount[i].innerHTML = i;
-// }
+
 
 //connecting to classes at html file
 let step = document.getElementsByClassName("astep");
